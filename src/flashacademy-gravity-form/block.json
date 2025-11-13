@@ -1,0 +1,19 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "flashacademy/gravity-form",
+  "version": "0.1.0",
+  "title": "FlashAcademy Gravity Form",
+  "category": "widgets",
+  "icon": "feedback",
+  "description": "Embed a Gravity Form inside a modal or section.",
+  "textdomain": "flashacademy-exit-intent-modal",
+  "supports": { "html": false },
+  "attributes": {
+    "formId": { "type": "number", "default": 0 }
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./editor.css",
+  "style": "file:./style-index.css",
+  "render": "file:./render.php"
+}

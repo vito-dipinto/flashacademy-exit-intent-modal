@@ -1,0 +1,16 @@
+/**
+ * Editor-only styles for FlashAcademy Gravity Form block
+ * These apply inside the Gutenberg editor.
+ */
+
+ .wp-block-flashacademy-gravity-form {
+	border: 1px dashed #ddd;
+	padding: 16px;
+	background: #f9f9f9;
+
+	p {
+		color: #555;
+		font-size: 14px;
+		margin: 0;
+	}
+}

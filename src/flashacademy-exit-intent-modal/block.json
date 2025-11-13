@@ -1,0 +1,7 @@
+{
+    "apiVersion": 3,
+    "name": "flashacademy/exit-intent-admin",
+    "title": "FlashAcademy Exit-Intent Admin Bundle",
+    "description": "Build entry for the admin settings app (no block registration).",
+    "editorScript": "file:./admin.js"
+  }

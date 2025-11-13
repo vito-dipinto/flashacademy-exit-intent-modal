@@ -1,0 +1,16 @@
+/**
+ * Front-end styles for FlashAcademy Gravity Form block
+ * These load on the public site.
+ */
+
+ .wp-block-flashacademy-gravity-form {
+	margin: 1.5em 0;
+	padding: 1em;
+	background-color: #fafafa;
+	border: 1px solid #eee;
+	border-radius: 8px;
+
+	form {
+		margin: 0;
+	}
+}

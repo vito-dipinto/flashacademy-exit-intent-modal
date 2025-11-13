@@ -1,0 +1,14 @@
+import { registerBlockType } from '@wordpress/blocks';
+import Edit from './edit';
+import metadata from './block.json';
+import './editor.scss';
+import './style.scss';
+
+
+registerBlockType(metadata.name, {
+	edit: Edit,
+	save() {
+		// Front-end is rendered via render.php
+		return null;
+	},
+});
