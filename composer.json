@@ -1,0 +1,7 @@
+{
+    "name": "flashacademy/flashacademy-exit-intent-modal",
+    "description": "FlashAcademy Exit Intent Modals plugin for WordPress",
+    "type": "wordpress-plugin",
+    "license": "GPL-2.0-or-later",
+    "require": {}
+}
