@@ -6,6 +6,9 @@ defined( 'ABSPATH' ) || exit;
 use FlashAcademy\FlashModals\Admin;
 use FlashAcademy\FlashModals\CPT;
 use FlashAcademy\FlashModals\ACF;
+use FlashAcademy\FlashModals\Frontend;
+use FlashAcademy\FlashModals\Blocks;
+use FlashAcademy\FlashModals\GF_API;
 
 /**
  * Main plugin bootstrap.
@@ -23,8 +26,8 @@ function setup(): void {
 	require_once __DIR__ . '/admin.php';
 	require_once __DIR__ . '/frontend.php';
 	require_once __DIR__ . '/blocks.php';
-    require_once __DIR__ . '/gf-api.php';
-    require_once __DIR__ . '/block-gravity-form.php';
+	require_once __DIR__ . '/gf-api.php';
+	require_once __DIR__ . '/block-gravity-form.php';
 
 	// Boot modules (only if their setup() exists to avoid fatals).
 	if ( function_exists( __NAMESPACE__ . '\\CPT\\setup' ) ) {
@@ -37,6 +40,20 @@ function setup(): void {
 
 	if ( function_exists( __NAMESPACE__ . '\\ACF\\setup' ) ) {
 		ACF\setup();
+	}
+
+	// 🔴 You were missing these:
+
+	if ( function_exists( __NAMESPACE__ . '\\Frontend\\setup' ) ) {
+		Frontend\setup();
+	}
+
+	if ( function_exists( __NAMESPACE__ . '\\Blocks\\setup' ) ) {
+		Blocks\setup();
+	}
+
+	if ( function_exists( __NAMESPACE__ . '\\GF_API\\setup' ) ) {
+		GF_API\setup();
 	}
 }
 

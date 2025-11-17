@@ -113,11 +113,18 @@ function enqueue_assets(): void {
 	}
 }
 
+
 /**
  * Output the modal HTML structure.
- * Uses Gutenberg content + ACF Gravity Form ID.
+ * Uses Gutenberg content (including Gravity Form block).
  */
 function render_modal(): void {
+	// TEMP DEBUG: show that this function runs and what modal is selected.
+	echo '<pre style="background:#000;color:#0f0;padding:10px;">';
+	var_dump( 'render_modal fired' );
+	var_dump( get_active_modal_id() );
+	echo '</pre>';
+
 	$modal_id = get_active_modal_id();
 	if ( ! $modal_id ) {
 		return;
@@ -128,25 +135,19 @@ function render_modal(): void {
 		return;
 	}
 
+	// This will render all Gutenberg blocks, including your Gravity Form block.
 	$content = apply_filters( 'the_content', $post->post_content );
-	$form_id = function_exists( 'get_field' )
-		? (int) get_field( 'faeim_gravity_form_id', $modal_id )
-		: 0;
 	?>
 	<div id="faeim-modal" class="faeim-hidden" aria-hidden="true" role="dialog" aria-modal="true">
 		<div class="faeim-overlay" data-faeim-close></div>
 		<div class="faeim-content" role="document">
-			<button class="faeim-close" type="button" aria-label="<?php esc_attr_e( 'Close', 'flashacademy-exit-intent-modal' ); ?>" data-faeim-close>&times;</button>
+			<button class="faeim-close" type="button"
+				aria-label="<?php esc_attr_e( 'Close', 'flashacademy-exit-intent-modal' ); ?>"
+				data-faeim-close>&times;</button>
 
 			<div class="faeim-body">
 				<?php echo $content; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 			</div>
-
-			<?php if ( $form_id ) : ?>
-				<div class="faeim-form">
-					<?php echo do_shortcode( '[gravityform id="' . (int) $form_id . '" title="false" description="false" ajax="true"]' ); ?>
-				</div>
-			<?php endif; ?>
 		</div>
 	</div>
 	<?php
