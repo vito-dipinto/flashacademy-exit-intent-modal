@@ -1,0 +1,8 @@
+/* Ensure Gravity Forms are visible inside Flash Modals */
+.faeim-modal {
+    .gform_wrapper {
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+    }
+  }

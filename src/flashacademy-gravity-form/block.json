@@ -8,12 +8,17 @@
   "icon": "feedback",
   "description": "Embed a Gravity Form inside a modal or section.",
   "textdomain": "flashacademy-exit-intent-modal",
-  "supports": { "html": false },
+  "supports": {
+    "html": false
+  },
   "attributes": {
-    "formId": { "type": "number", "default": 0 }
+    "formId": {
+      "type": "number",
+      "default": 0
+    }
   },
   "editorScript": "file:./index.js",
-  "editorStyle": "file:./editor.css",
+  "editorStyle": "file:./index.css",
   "style": "file:./style-index.css",
   "render": "file:./render.php"
 }

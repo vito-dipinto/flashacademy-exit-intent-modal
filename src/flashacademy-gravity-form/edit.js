@@ -50,24 +50,29 @@ export default function Edit( { attributes, setAttributes } ) {
 			} );
 	}, [] );
 
+	// We already get { id, title } from gf-api.php.
+	const normalizedForms = forms.map( ( form ) => ( {
+		id: parseInt( form.id, 10 ) || 0,
+		title: form.title || `Form #${ form.id }`,
+	} ) );
+
 	const formOptions = [
 		{
 			label: __(
 				'Select a form',
 				'flashacademy-exit-intent-modal'
 			),
-			value: 0,
+			value: '0',
 		},
-		...forms.map( ( form ) => ( {
+		...normalizedForms.map( ( form ) => ( {
 			label: `${ form.id } \u2013 ${ form.title }`,
-			value: form.id,
+			value: String( form.id ),
 		} ) ),
 	];
 
 	const handleFormChange = ( value ) => {
 		const id = parseInt( value, 10 ) || 0;
 		setAttributes( { formId: id } );
-		// If form changes, hide preview to avoid stale server render.
 		setShowPreview( false );
 	};
 
@@ -79,7 +84,7 @@ export default function Edit( { attributes, setAttributes } ) {
 			);
 		}
 
-		const found = forms.find( ( f ) => f.id === formId );
+		const found = normalizedForms.find( ( f ) => f.id === formId );
 
 		if ( found ) {
 			return sprintf(
@@ -114,10 +119,7 @@ export default function Edit( { attributes, setAttributes } ) {
 					{ isLoading && <Spinner /> }
 
 					{ loadError && (
-						<Notice
-							status="error"
-							isDismissible={ false }
-						>
+						<Notice status="error" isDismissible={ false }>
 							{ loadError }
 						</Notice>
 					) }
@@ -128,16 +130,13 @@ export default function Edit( { attributes, setAttributes } ) {
 								'Gravity Form',
 								'flashacademy-exit-intent-modal'
 							) }
-							value={ formId || 0 }
+							value={ String( formId || 0 ) }
 							options={ formOptions }
 							onChange={ handleFormChange }
-						 />
+						/>
 					) }
 
-					<Notice
-						status="info"
-						isDismissible={ false }
-					>
+					<Notice status="info" isDismissible={ false }>
 						{ __(
 							'Click "Preview Form" to render the real Gravity Form output. This may be slow.',
 							'flashacademy-exit-intent-modal'
@@ -153,13 +152,13 @@ export default function Edit( { attributes, setAttributes } ) {
 					>
 						{ showPreview
 							? __(
-								'Hide Preview',
-								'flashacademy-exit-intent-modal'
-							)
+									'Hide Preview',
+									'flashacademy-exit-intent-modal'
+							  )
 							: __(
-								'Preview Form',
-								'flashacademy-exit-intent-modal'
-							) }
+									'Preview Form',
+									'flashacademy-exit-intent-modal'
+							  ) }
 					</Button>
 				</PanelBody>
 			</InspectorControls>
@@ -169,8 +168,7 @@ export default function Edit( { attributes, setAttributes } ) {
 					<ServerSideRender
 						block="flashacademy/gravity-form"
 						attributes={ {
-							formId:
-								parseInt( formId, 10 ) || 0,
+							formId: parseInt( formId, 10 ) || 0,
 						} }
 					/>
 				) : (

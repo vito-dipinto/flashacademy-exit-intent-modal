@@ -3,7 +3,7 @@
  * These apply inside the Gutenberg editor.
  */
 
- .wp-block-flashacademy-gravity-form {
+ .editor-styles-wrapper .wp-block-flashacademy-gravity-form {
 	border: 1px dashed #ddd;
 	padding: 16px;
 	background: #f9f9f9;
@@ -12,5 +12,14 @@
 		color: #555;
 		font-size: 14px;
 		margin: 0;
+	}
+
+	/* Force Gravity Forms visible in preview */
+	.gform_wrapper {
+		display: block !important;
+		visibility: visible !important;
+		opacity: 1 !important;
+		max-height: none !important;
+		overflow: visible !important;
 	}
 }
