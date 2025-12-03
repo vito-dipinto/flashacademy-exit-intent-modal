@@ -1,0 +1,67 @@
+#flashacademy-exit-modal-analytics {
+    font-family: sans-serif;
+    padding-top: 10px;
+  
+    table {
+      border-collapse: collapse;
+      min-width: 720px;
+      background: #fff;
+      font-size: 14px;
+    }
+  
+    thead th {
+      padding: 8px;
+      border-bottom: 2px solid #ddd;
+      text-align: left;
+  
+      &:nth-child(2),
+      &:nth-child(3),
+      &:nth-child(4) {
+        text-align: right;
+      }
+    }
+  
+    tbody td {
+      padding: 8px;
+      border-top: 1px solid #ddd;
+  
+      &:nth-child(2),
+      &:nth-child(3),
+      &:nth-child(4) {
+        text-align: right;
+      }
+    }
+  
+    .faeim-searchbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 720px;
+      margin: 12px 0;
+  
+      input {
+        min-width: 260px;
+        padding: 6px 8px;
+        border: 1px solid #ccc;
+        border-radius: 2px;
+      }
+  
+      .faeim-count {
+        font-size: 12px;
+        color: #555;
+      }
+    }
+  
+    .faeim-pagination {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      margin-top: 12px;
+  
+      button {
+        padding: 4px 8px;
+      }
+    }
+  }
+  

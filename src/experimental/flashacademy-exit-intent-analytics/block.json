@@ -1,0 +1,8 @@
+{
+  "apiVersion": 3,
+  "name": "flashacademy/exit-intent-analytics",
+  "title": "FlashAcademy Exit-Intent Analytics Bundle",
+  "description": "Analytics admin app.",
+  "editorScript": "file:./analytics.js",
+  "style": "file:./style.scss"
+}

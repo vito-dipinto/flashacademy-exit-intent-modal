@@ -33,3 +33,19 @@ if ( ! defined( 'FAEIM_BOOTSTRAPPED' ) ) {
 		}
 	}, 20 );
 }
+
+/**
+ * 3) Activation hook — create the analytics event table ONCE.
+ */
+register_activation_hook(
+	__FILE__,
+	function () {
+		// Load file in case plugin isn't fully bootstrapped yet.
+		require_once __DIR__ . '/inc/analytics.php';
+
+		if ( function_exists( '\FlashAcademy\FlashModals\Analytics\create_events_table' ) ) {
+			\FlashAcademy\FlashModals\Analytics\create_events_table();
+			update_option( 'faeim_events_table_installed', '1' );
+		}
+	}
+);

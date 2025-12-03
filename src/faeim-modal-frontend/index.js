@@ -1,11 +1,11 @@
 // src/faeim-modal-frontend/index.js
-
 import './style.scss';
 
 // Core helpers
 import { getModalElement } from './core/dom';
 import { showModalOnce } from './core/show';
 import { getFrequencyDebugInfo, markConverted } from './core/frequency';
+import { sendAnalyticsEvent } from './core/analytics';
 
 // Triggers
 import { attachTimeTrigger } from './triggers/time';
@@ -149,7 +149,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
 		hasMarkedConverted = true;
 
+		// Local frequency flag
 		markConverted(cfg);
+
+		// 🔥 Analytics: conversion
+		try {
+			sendAnalyticsEvent('converted', cfg);
+		} catch (e) {
+			// eslint-disable-next-line no-console
+			console.warn('[FAEIM] sendAnalyticsEvent("converted") failed', e);
+		}
 
 		logDebug(cfg, `${source}: Modal marked as converted for this user/browser`, {
 			modalId: cfg.modalId,
